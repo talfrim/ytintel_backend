@@ -24,16 +24,29 @@ def get_channels():
     return "server error", 500
 
 
+
 ''' VIDEOS '''
 
 
-# returns up to 100 video previews only summary of comments
-@app.route('/videos/videosPrev', methods=['GET'])
-def get_videos_info():
-    channel_id = request.args.get('channel_id')
-    if channel_id is not None:
-        res = videos.get_videos_prev_by_channel(channel_id)
-        if res is not None and int(res.status_code) == 200:
+# returns video id list from playlist id,
+# client supposed to send it from channel's data response it gets
+@app.route('/videos/videosIds', methods=['GET'])
+def get_videos_ids_by_playlist():
+    pl_id = request.args.get('playlistId')
+    if pl_id is not None:
+        res = videos.get_videos_ids_by_channel(pl_id)
+        if res is not None:
+            return res
+    return "Server error", 500
+
+
+# returns video preview info by video od
+@app.route('/videos/videoPreviewInfoById', methods=['GET'])
+def get_videos_info_by_id():
+    vid_id = request.args.get('videoId')
+    if vid_id is not None:
+        res = videos.get_video_info_by_id(vid_id)
+        if res is not None:
             return res
     return "Server error", 500
 
@@ -41,10 +54,10 @@ def get_videos_info():
 @app.route('/videos/videoComments', methods=['GET'])
 # returns the comments we want to show for specific video
 def get_video_comments():
-    video_id = request.args.get('video_id')
+    video_id = request.args.get('videoId')
     if video_id is not None:
         res = videos.get_commetns_for_video(video_id)
-        if res is not None and int(res.status_code) == 200:
+        if res is not None:
             return res
     return "Server error", 500
 

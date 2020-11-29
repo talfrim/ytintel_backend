@@ -12,6 +12,9 @@ class Comment:
     def set_sentiment(self, sentiment):
         self.sentiment = sentiment
 
+    def analyze_sentiment(self):
+        self.set_sentiment(1)
+
     def get_dict(self):
         dictionary = vars(self)
         return dictionary
