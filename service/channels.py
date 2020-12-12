@@ -1,6 +1,6 @@
 import json
 
-from backend.business_logic.youtube_communicator import youtube_communicator
+from business_logic.youtube_communicator import youtube_communicator
 
 
 # returns up to 5 channels JSON data that matches the query.

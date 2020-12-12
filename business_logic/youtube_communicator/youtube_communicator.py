@@ -4,15 +4,17 @@
 import requests
 import time
 
-from backend.business_logic.ChannelPreview import ChannelPreview
-from backend.business_logic.Video import Video
-from backend.business_logic.Comment import Comment
+from business_logic.ChannelPreview import ChannelPreview
+from business_logic.Video import Video
+from business_logic.Comment import Comment
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-api_key = "AIzaSyDP7adS-CnabpH1uTSDs8jjldgOVQq2mSQ"
+api_key = os.getenv("API_KEY")
 base_url = "https://youtube.googleapis.com/youtube/v3/"
 
 """ CHANNELS """
-
 
 # This function returns a list of up to 5 top channel ids according to the name entered
 def get_channels_ids_by_name(name):

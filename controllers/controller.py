@@ -1,6 +1,6 @@
 import json
 
-from backend.service import channels, videos
+from service import channels, videos
 from flask import Flask, jsonify, request
 app = Flask(__name__)
 

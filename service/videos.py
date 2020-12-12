@@ -1,6 +1,6 @@
 import json
 
-from backend.business_logic.youtube_communicator import youtube_communicator
+from business_logic.youtube_communicator import youtube_communicator
 
 
 # returns all data for previewing the video according to id provided
