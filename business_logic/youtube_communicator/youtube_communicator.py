@@ -8,7 +8,7 @@ from backend.business_logic.ChannelPreview import ChannelPreview
 from backend.business_logic.Video import Video
 from backend.business_logic.Comment import Comment
 
-api_key = "AIzaSyDP7adS-CnabpH1uTSDs8jjldgOVQq2mSQ"
+api_key = "AIzaSyBsrS5Xiq-86PX1F4tUI7PofN7-vL9XdXs"
 base_url = "https://youtube.googleapis.com/youtube/v3/"
 
 """ CHANNELS """

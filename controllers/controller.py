@@ -21,7 +21,7 @@ def get_channels():
         res = channels.search_channels(q)
         if res is not None:
             return res
-    return "server error", 500
+    return "error", 500
 
 
 
