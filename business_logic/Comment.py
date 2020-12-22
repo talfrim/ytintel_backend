@@ -1,3 +1,6 @@
+from business_logic.semantic_analyzer.CommentAnalyzer import CommentAnalyzer
+
+
 class Comment:
 
     # At first comment will not have sentiment, after running it through the semantic analyzer
@@ -8,13 +11,16 @@ class Comment:
         self.author = author
         self.likes = likes
         self.sentiment = None
+        self.comment_analyzer = CommentAnalyzer.getInstance()
 
     def set_sentiment(self, sentiment):
         self.sentiment = sentiment
 
     def analyze_sentiment(self):
-        self.set_sentiment(1)
+        sentiment = self.comment_analyzer.analyze_text(self.text)
+        self.set_sentiment(sentiment)
 
     def get_dict(self):
+        self.comment_analyzer = None
         dictionary = vars(self)
         return dictionary

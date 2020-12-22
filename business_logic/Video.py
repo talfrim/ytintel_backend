@@ -10,16 +10,21 @@ class Video:
         self.like_count = like_count
         self.dislike_count = dislike_count
         self.comment_count = comment_count
-        self.comment_list = []
         self.bad_comments = -1
         self.good_comments = -1
         self.neutral_comments = -1
-
-        self.top_comments = []
+        self.top_comments = []  # list of strings
 
     def get_dict(self):
+        dct_comments = []
+        for c in self.top_comments:
+            dct_comments.append(c.get_dict())
+        self.top_comments = dct_comments    # turning comments to dicts, note: destroys the comment list, if it is needed should be iplemented differently
         dictionary = vars(self)
         return dictionary
+
+    def set_top_comments_lst(self, lst):
+        self.top_comments = lst
 
     def add_good_comment(self):
         self.good_comments += 1
@@ -39,3 +44,4 @@ class Video:
                 self.add_neutral_comment()
             if c.sentiment == -1:
                 self.add_bad_comment()
+        self.comment_list = None

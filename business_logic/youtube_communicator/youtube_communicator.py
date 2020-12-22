@@ -18,7 +18,7 @@ base_url = "https://youtube.googleapis.com/youtube/v3/"
 
 # This function returns a list of up to 5 top channel ids according to the name entered
 def get_channels_ids_by_name(name):
-    req_url = base_url + "search?part=snippet&maxResults=5&q=" + name + \
+    req_url = base_url + "search?part=snippet&maxResults=5&q=" + str(name) + \
               "&type=channel&fields=items%2Fsnippet%2FchannelId&key=" + api_key
     res = requests.get(req_url)
     if int(res.status_code) == 200:
@@ -105,9 +105,11 @@ def get_all_toplevel_comments_for_channel(channel_id, page_token="", max_results
                         comm is None]  # removing all none values (for comments who are on the channel and not on video)
         return comment_list
 
-# returns all comments for videos
+# returns all comments for
+# 100 each page
+# ordered by relevance
 def get_comments_for_video(video_id, page_limit=1):
-    initial_req_url = base_url + "commentThreads?part=snippet%2Creplies&maxResults=100&videoId=" + video_id + "&key=" + api_key
+    initial_req_url = base_url + "commentThreads?part=snippet%2Creplies&order=relevance&maxResults=100&videoId=" + video_id + "&key=" + api_key
     res = requests.get(initial_req_url)
     has_more_comments = True
     comment_list = []

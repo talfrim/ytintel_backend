@@ -20,7 +20,10 @@ def alive():
 def get_channels():
     q = request.args.get('q')
     if q is not None:
-        res = channels.search_channels(q)
+        print(q)
+        print(type(q))
+        x = q
+        res = channels.search_channels(x)
         if res is not None:
             return res
     return "error", 500
@@ -36,7 +39,7 @@ def get_channels():
 def get_videos_ids_by_playlist():
     pl_id = request.args.get('playlistId')
     if pl_id is not None:
-        res = videos.get_videos_ids_by_channel(pl_id)
+        res = videos.get_videos_ids_by_playlist(pl_id)
         if res is not None:
             return res
     return "Server error", 500
