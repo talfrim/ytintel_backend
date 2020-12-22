@@ -72,9 +72,12 @@ def get_videos_data_from_id_list(id_list):
     if int(res.status_code) == 200:
         response_json = res.json()
         response_list = response_json["items"]
+        response_list = response_json["items"]
         video_list = list(map(lambda vid: Video(
             vid["id"],
             vid["snippet"]["title"],
+            vid["snippet"]["description"],
+            vid["snippet"]["publishedAt"],
             vid["snippet"]["thumbnails"]["medium"]["url"],
             vid["snippet"]["categoryId"],
             vid["statistics"]["viewCount"],
