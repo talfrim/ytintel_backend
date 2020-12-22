@@ -42,7 +42,7 @@ def get_videos_ids_by_playlist():
     return "Server error", 500
 
 
-# returns video preview info by video od
+# returns video preview info by video id
 @app.route('/videos/videoPreviewInfoById', methods=['GET'])
 def get_videos_info_by_id():
     vid_id = request.args.get('videoId')
@@ -53,6 +53,7 @@ def get_videos_info_by_id():
     return "Server error", 500
 
 
+# ***DO NOT USE***- videos come with comments by default now.
 @app.route('/videos/videoComments', methods=['GET'])
 # returns the comments we want to show for specific video
 def get_video_comments():

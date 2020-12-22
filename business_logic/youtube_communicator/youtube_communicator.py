@@ -106,7 +106,7 @@ def get_all_toplevel_comments_for_channel(channel_id, page_token="", max_results
         return comment_list
 
 # returns all comments for videos
-def get_comments_for_video(video_id, page_limit=4):
+def get_comments_for_video(video_id, page_limit=1):
     initial_req_url = base_url + "commentThreads?part=snippet%2Creplies&maxResults=100&videoId=" + video_id + "&key=" + api_key
     res = requests.get(initial_req_url)
     has_more_comments = True

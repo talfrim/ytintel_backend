@@ -7,13 +7,9 @@ from business_logic.youtube_communicator import youtube_communicator
 def get_video_info_by_id(vid_id):
     video = youtube_communicator.get_videos_data_from_id_list([vid_id])[0]  # video object
     comment_list = youtube_communicator.get_comments_for_video(vid_id)  # all comments for video
-    for comment in comment_list:
-        comment.analyze_sentiment()
-        if comment_list.sentiment == 1:
-            video.add_good_comment()
-        else:
-            video.add_bad_comment()
-    video.calc_good_comments_rate()
+    # analyzing comments
+    video.comment_list = comment_list
+    video.analyze_comments()
     video_dict = video.get_dict()
     return json.dumps(video_dict)
 

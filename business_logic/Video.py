@@ -13,7 +13,9 @@ class Video:
         self.comment_list = []
         self.bad_comments = -1
         self.good_comments = -1
-        self.good_comments_rate = 0
+        self.neutral_comments = -1
+
+        self.top_comments = []
 
     def get_dict(self):
         dictionary = vars(self)
@@ -25,6 +27,15 @@ class Video:
     def add_bad_comment(self):
         self.bad_comments += 1
 
-    def calc_good_comments_rate(self):
-        self.good_comments_rate = self.good_comments / self.comment_count if self.comment_count > 0 else -1
+    def add_neutral_comment(self):
+        self.neutral_comments += 1
 
+    def analyze_comments(self):
+        for c in self.comment_list:
+            c.analyze_sentiment()
+            if c.sentiment == 1:
+                self.add_good_comment()
+            if c.sentiment == 0:
+                self.add_neutral_comment()
+            if c.sentiment == -1:
+                self.add_bad_comment()
