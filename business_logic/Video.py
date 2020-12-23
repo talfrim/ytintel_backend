@@ -1,12 +1,13 @@
 class Video:
     """class representing youtube video"""
 
-    def __init__(self, vid_id, title, description, published_at, thumbnail_url, category_id, view_count, like_count, dislike_count,
+    def __init__(self, vid_id, title, description, duration, published_at, thumbnail_url, category_id, view_count, like_count, dislike_count,
                  comment_count):
         self.view_count = view_count
         self.category_id = category_id
         self.title = title
         self.description = description
+        self.duration = duration
         self.published_at = published_at
         self.thumbnail_url = thumbnail_url
         self.like_count = like_count
