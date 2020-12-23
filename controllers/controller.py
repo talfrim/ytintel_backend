@@ -56,16 +56,6 @@ def get_videos_info_by_id():
     return "Server error", 500
 
 
-# ***DO NOT USE***- videos come with comments by default now.
-@app.route('/videos/videoComments', methods=['GET'])
-# returns the comments we want to show for specific video
-def get_video_comments():
-    video_id = request.args.get('videoId')
-    if video_id is not None:
-        res = videos.get_commetns_for_video(video_id)
-        if res is not None:
-            return res
-    return "Server error", 500
 
 
 
