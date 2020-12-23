@@ -7,7 +7,6 @@ class Video:
         self.category_id = category_id
         self.title = title
         self.description = description
-        self.description = description
         self.published_at = published_at
         self.thumbnail_url = thumbnail_url
         self.like_count = like_count
