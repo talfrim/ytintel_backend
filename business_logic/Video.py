@@ -13,9 +13,9 @@ class Video:
         self.like_count = like_count
         self.dislike_count = dislike_count
         self.comment_count = comment_count
-        self.bad_comments = -1
-        self.good_comments = -1
-        self.neutral_comments = -1
+        self.bad_comments = 0
+        self.good_comments = 0
+        self.neutral_comments = 0
         self.top_comments = []  # list of strings
 
     def get_dict(self):
