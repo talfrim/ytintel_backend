@@ -1,8 +1,5 @@
-# TODO async?
-
 
 import requests
-import time
 
 from business_logic.ChannelPreview import ChannelPreview
 from business_logic.Video import Video
@@ -86,27 +83,6 @@ def get_videos_data_from_id_list(id_list):
             vid["statistics"]["commentCount"]
         ), response_list))
         return video_list
-
-# !!!DEPRECATED - use get_comments_forVideo!!!
-# This method return a list of all comments for channel (comment objects),
-# if more then 100 desired, using page tokens needed
-def get_all_toplevel_comments_for_channel(channel_id, page_token="", max_results="100"):
-    req_url = base_url + "commentThreads?part=snippet%2Creplies&allThreadsRelatedToChannelId=" + channel_id + \
-              "&maxResults=" + max_results + "&pageToken=" + page_token + "&key=" + api_key
-    res = requests.get(req_url)
-    if int(res.status_code) == 200:
-        response_json = res.json()
-        response_list = response_json["items"]
-        comment_list = list(map(lambda comm: Comment(
-            comm["snippet"]["topLevelComment"]["snippet"]["textOriginal"],
-            comm["snippet"]["topLevelComment"]["snippet"]["authorDisplayName"],
-            comm["snippet"]["topLevelComment"]["snippet"]["likeCount"],
-            comm["snippet"]["videoId"]
-            if "videoId" in comm["snippet"] else None  # if it is not a comment on video, pun None instead
-        ), response_list))
-        comment_list = [comm for comm in comment_list if
-                        comm is None]  # removing all none values (for comments who are on the channel and not on video)
-        return comment_list
 
 # returns all comments for
 # 100 each page

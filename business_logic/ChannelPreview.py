@@ -11,6 +11,7 @@ class ChannelPreview:
         self.subscriber_count = subscriber_count
         self.uploads_playlist_id = uploads_playlist_id
 
+    # returns the object as a dictionary
     def get_dict(self):
         dictionary = vars(self)
         return dictionary

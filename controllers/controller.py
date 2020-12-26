@@ -16,6 +16,7 @@ def alive():
 
 ''' CHANNELS '''
 
+# returns up to 5 channels' data, by a search query for channels.
 @app.route('/channels/searchChannels', methods=['GET'])
 def get_channels():
     q = request.args.get('q')
@@ -32,9 +33,8 @@ def get_channels():
 
 ''' VIDEOS '''
 
-
-# returns video id list from playlist id,
-# client supposed to send it from channel's data response it gets
+# returns videos ids list by playlist id,
+# which the client receives from channel's data.
 @app.route('/videos/videosIds', methods=['GET'])
 def get_videos_ids_by_playlist():
     pl_id = request.args.get('playlistId')
@@ -45,7 +45,7 @@ def get_videos_ids_by_playlist():
     return "Server error", 500
 
 
-# returns video preview info by video id
+# returns video preview info by video id.
 @app.route('/videos/videoPreviewInfoById', methods=['GET'])
 def get_videos_info_by_id():
     vid_id = request.args.get('videoId')
@@ -54,13 +54,6 @@ def get_videos_info_by_id():
         if res is not None:
             return res
     return "Server error", 500
-
-
-
-
-
-
-
 
 
 if __name__ == "__main__":

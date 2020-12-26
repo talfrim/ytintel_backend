@@ -49,7 +49,7 @@ class CommentAnalyzer:
             return 0 # neutral
 
 
-
+    # returns sparse matrix with all the features of the given text.
     def get_final_vectorizer(self, text):
         # insert to df
         df = pd.DataFrame(columns=['text'])
@@ -63,7 +63,7 @@ class CommentAnalyzer:
         total_train_vectorizer = scipy.sparse.hstack([tfidf_vectorized, count_vectorized])  # appending all features to sparse matrix
         return total_train_vectorizer
 
-
+    # returns the stemmed paragraph from the given paragraph.
     def stemParagraph(self, paragraph):
         token_words = word_tokenize(paragraph)
         stem_paragraph = []
@@ -72,6 +72,8 @@ class CommentAnalyzer:
             stem_paragraph.append(" ")
         return "".join(stem_paragraph)
 
+    # pre-processing the document
     def preprocessing(self, doc):
+        # lowercase the words in the doc
         doc = doc.lower()
         return doc

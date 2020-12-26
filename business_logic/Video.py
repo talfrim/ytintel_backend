@@ -18,6 +18,7 @@ class Video:
         self.neutral_comments = 0
         self.top_comments = []  # list of strings
 
+    # returns the object as a dictionary
     def get_dict(self):
         dct_comments = []
         for c in self.top_comments:
