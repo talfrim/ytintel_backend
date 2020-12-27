@@ -21,8 +21,6 @@ def alive():
 def get_channels():
     q = request.args.get('q')
     if q is not None:
-        print(q)
-        print(type(q))
         x = q
         res = channels.search_channels(x)
         if res is not None:
